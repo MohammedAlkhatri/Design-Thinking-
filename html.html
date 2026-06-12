@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FME Automated RFID Tracking Case Study</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 45px;
+            background-color: #ffffff;
+        }
+        h1 {
+            font-size: 2em;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+            color: #0366d6;
+        }
+        h2 {
+            font-size: 1.5em;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+            margin-top: 24px;
+            color: #24292e;
+        }
+        h3 {
+            font-size: 1.25em;
+            margin-top: 20px;
+        }
+        hr {
+            height: 0.25em;
+            padding: 0;
+            margin: 24px 0;
+            background-color: #e1e4e6;
+            border: 0;
+        }
+        code {
+            padding: 0.2em 0.4em;
+            margin: 0;
+            font-size: 85%;
+            background-color: rgba(27,31,35,0.05);
+            border-radius: 3px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        }
+        .diagram {
+            background-color: #f6f8fa;
+            border: 1px solid #eaecef;
+            border-radius: 6px;
+            padding: 16px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+        table th, table td {
+            padding: 6px 13px;
+            border: 1px solid #dfe2e5;
+        }
+        table tr {
+            background-color: #ffffff;
+            border-top: 1px solid #c6cbd1;
+        }
+        table tr:nth-child(even) {
+            background-color: #f6f8fa;
+        }
+        ul {
+            padding-left: 2em;
+        }
+        li {
+            margin-top: 0.25em;
+        }
+        .highlight-box {
+            background-color: #f1f8ff;
+            border-left: 0.25em solid #0366d6;
+            padding: 16px;
+            border-radius: 0 6px 6px 0;
+            margin: 16px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Modernizing Nuclear Outage Operations: Automated RFID Tracking for FME Compliance</h1>
+    <p>An operational case study applying the <strong>Design Thinking Methodology</strong> to eliminate manual data-entry bottlenecks, reduce worker queue times, and mitigate foreign material exclusion (FME) compliance risks at high-security redzone boundaries.</p>
+
+    <div class="highlight-box">
+        <strong>Executive Summary:</strong>
+        <ul>
+            <li><strong>The Problem:</strong> Manual paper logging at the Foreign Material Exclusion (FME) zone barrier required <strong>4 minutes per person</strong> to document technicians and their unpredictable toolsets. This created massive queue lines during critical outage shift changes and left the plant vulnerable to slow, reactive tracking if a tool was left inside the system.</li>
+            <li><strong>The Solution:</strong> A compact, camera-free <strong>Smart RFID FME Barrier Checkpoint</strong> that automates asset tracking, matching vendor identities to tagged tool sets instantly, driving check-in speeds down to seconds while providing real-time visual alerts for unreturned tools.</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <h2>🏗️ Step-by-Step Design Thinking Implementation</h2>
+
+    <div class="diagram">
+ ❶ EMPATHIZE ───► ❷ DEFINE ───► ❸ IDEATE ───► ❹ PROTOTYPE ───► ❺ TEST
+ (User Mapping)   (POV & HMW)    (RFID Choice)    (Sandbox Build)  (Simulation)
+    </div>
+
+    <h3>Stage 1: Empathize</h3>
+    <p><strong>Objective:</strong> Ground the project in the lived operational experiences and friction points of the personnel working the frontline of the outage.</p>
+    <ul>
+        <li><strong>Action Taken:</strong> Analyzed the step-by-step realities of both the FME Coordinator and the incoming Vendor Technicians during peak shift turnovers.</li>
+        <li><strong>Key Findings:</strong> The FME Coordinator was operating under intense cognitive load—forced to act as a data-entry clerk (transcribing serial numbers and tool descriptions by hand) while simultaneously trying to manage active compliance safety gates.</li>
+        <li><strong>Tools Used:</strong>
+            <ul>
+                <li><em>User Persona Profiles:</em> Mapped out separate emotional, operational, and structural friction points for the Coordinator and the Technicians.</li>
+                <li><em>Time-Motion Analysis:</em> Quantified the baseline friction threshold (<strong>4 minutes per worker</strong> for check-in/out).</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Stage 2: Define</h3>
+    <p><strong>Objective:</strong> Narrow the messy, human frustrations from the Empathize stage into a laser-focused, actionable problem statement.</p>
+    <ul>
+        <li><strong>Action Taken:</strong> Formulated a formal Point of View (POV) framework and evaluated core operational and environmental restrictions.</li>
+        <li><strong>Design Constraints Uncovered:</strong>
+            <ol>
+                <li><em>Physical Footprint:</em> The FME boundary is a cramped, restricted physical space; solutions cannot use bulky hardware.</li>
+                <li><em>Security Boundaries:</em> The deployment area is an absolute <strong>Redzone</strong>, meaning cameras and Computer Vision solutions are strictly forbidden due to security regulations.</li>
+                <li><em>Asset Diversity:</em> Toolsets are not standardized; vendors bring a fluid, unpredictable mix of personal and company gear.</li>
+            </ol>
+        </li>
+        <li><strong>Tools Used:</strong>
+            <ul>
+                <li><em>POV Statement:</em> <code>"We met an FME Coordinator managing vendor entries during outages who must write down highly diverse tool inventories on paper in a cramped space, because speed and compliance are currently competing against each other."</em></code></li>
+                <li><em>How-Might-We (HMW) Questions:</em> Framing actionable springboards:
+                    <ul>
+                        <li>HMW speed up data capture instantly without manual writing?</li>
+                        <li>HMW error-proof check-out by auto-alerting coordinators on missed tools?</li>
+                        <li>HMW respect a cramped physical footprint without using cameras?</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Stage 3: Ideate</h3>
+    <p><strong>Objective:</strong> Brainstorm divergent technical architectures and down-select the optimal mechanism that respects all hard nuclear site constraints.</p>
+    <ul>
+        <li><strong>Action Taken:</strong> Evaluated three distinct architectural pathways: Visual scanning apps, AI-edge computer vision mats, and hardware-assisted RFID tracking.</li>
+        <li><strong>Down-Selection Choice:</strong> <strong>Concept B (RFID Portal Integration)</strong> was selected. Computer vision was rejected immediately due to the Redzone camera restriction. RFID allowed for seamless structural integration into existing tight safety barriers.</li>
+        <li><strong>Tools Used:</strong>
+            <ul>
+                <li><em>Matrix Analysis:</em> Evaluating ideas against site security constraints.</li>
+                <li><em>Architecture Schematization:</em> Mapping the interaction flow between Vendor Badges, Asset Tags, and Backend Applications.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Stage 4: Prototype</h3>
+    <p><strong>Objective:</strong> Construct a low-cost, low-risk, scaled-down version of the ecosystem to validate tracking mechanics before purchasing industrial hardware.</p>
+    <ul>
+        <li><strong>Action Taken:</strong> Built a dual-component prototyping blueprint split into physical asset tagging and localized software logic.</li>
+        <li><strong>Prototype Specifications:</strong>
+            <ul>
+                <li><em>Asset Tracking:</em> <strong>Option 1 (Individual Asset Tagging)</strong> using heavy-duty, temporary RFID zip-ties/tethers attached directly to individual tools to maintain nuclear-grade accountability.</li>
+                <li><em>Software Interface:</em> Designed a highly scannable, three-state interface prioritizing zero-text reading for the coordinator using solid color-blocked UI flashes (Green for success, Flashing Red for missing item alert).</li>
+            </ul>
+        </li>
+        <li><strong>Tools Used:</strong>
+            <ul>
+                <li><em>UI Wireframing:</em> Crafting high-contrast visual alert layouts.</li>
+                <li><em>Hardware Sandbox Map:</em> Planning a mock setup utilizing a single USB UHF RFID reader connected to a localized laptop.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Stage 5: Test</h3>
+    <p><strong>Objective:</strong> Put the prototype into the hands of real users within a controlled environment to stress-test the workflow against the original baseline.</p>
+    <ul>
+        <li><strong>Action Taken:</strong> Deployed a physical testing environment inside the site training center to simulate live-action stressors.</li>
+        <li><strong>Testing Parameters:</strong>
+            <ul>
+                <li><em>Physical Sandbox:</em> Taped out a 1:1 footprint model of the restricted FME boundary zone on the training facility floor.</li>
+                <li><em>Chaos Simulation:</em> Instructed mock vendors to rush the line, pack tools tightly together, and hide tagged items in pockets to test read-range and antenna configuration.</li>
+            </ul>
+        </li>
+        <li><strong>Tools Used:</strong>
+            <ul>
+                <li><em>Live Validation Script:</em> Simulated shift turnovers using 5-10 heavily varied toolsets.</li>
+                <li><em>Throughput Metrics:</em> Tracking performance against the target drop from <strong>4 minutes to less than 15 seconds per worker</strong>.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <hr>
+
+    <h2>🛠️ Complete Summary of Tools Used Across the Project</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Design Thinking Stage</th>
+                <th>Dedicated Tools Deployed</th>
+                <th>Project Output</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>1. Empathize</strong></td>
+                <td>• User Persona Mapping<br>• Time-Motion Analysis</td>
+                <td>Discovered the 4-minute bottleneck and coordinator cognitive overload.</td>
+            </tr>
+            <tr>
+                <td><strong>2. Define</strong></td>
+                <td>• POV Formulation Matrix<br>• Environmental Constraint Filter</td>
+                <td>Identified Redzone camera restrictions and micro-space bounds.</td>
+            </tr>
+            <tr>
+                <td><strong>3. Ideate</strong></td>
+                <td>• Multi-Concept Matrix Analysis</td>
+                <td>Down-selected to Passive RFID Tagging; eliminated Computer Vision.</td>
+            </tr>
+            <tr>
+                <td><strong>4. Prototype</strong></td>
+                <td>• UI Wireframing (Color-Block Alerts)<br>• 1:1 Hardware Sandbox Mapping</td>
+                <td>Selected individual RFID zip-ties + localized software alert screen.</td>
+            </tr>
+            <tr>
+                <td><strong>5. Test</strong></td>
+                <td>• 1:1 Physical Training Facility Simulation<br>• Chaos-testing Scripting</td>
+                <td>Validated antenna read-rates and tracked worker throughput times.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>🚀 Future Roadmap &amp; Scaling</h2>
+    <ol>
+        <li><strong>Phase 1:</strong> Complete Sandbox validation in the Training Facility.</li>
+        <li><strong>Phase 2:</strong> Integrate localized backend app with core plant vendor management systems.</li>
+        <li><strong>Phase 3:</strong> Pilot deployment at a single lower-risk FME boundary before full-scale outage roll-out.</li>
+    </ol>
+
+</body>
+</html>
